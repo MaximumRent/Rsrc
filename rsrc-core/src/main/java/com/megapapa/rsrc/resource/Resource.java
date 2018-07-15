@@ -12,9 +12,8 @@ import java.time.LocalDateTime;
 public abstract class Resource {
 
     private String path;
-    private String name;
     private LocalDateTime creationTime;
-    private int size;
+    private long size;
 
     public String getPath() {
         return path;
@@ -24,19 +23,11 @@ public abstract class Resource {
         this.path = path;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSize() {
+    public long getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(long size) {
         this.size = size;
     }
 

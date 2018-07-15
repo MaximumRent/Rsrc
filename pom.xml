@@ -15,14 +15,25 @@
         <module>rsrc-spring</module>
     </modules>
 
+    <properties>
+        <slf4j.version>1.7.25</slf4j.version>
+    </properties>
+
+
     <dependencyManagement>
         <dependencies>
+            <!-- Move bootique dependencies to bootique module -->
             <dependency>
                 <groupId>io.bootique.bom</groupId>
                 <artifactId>bootique-bom</artifactId>
                 <version>0.25</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
