@@ -1,21 +1,14 @@
 package com.megapapa.rsrc.system;
 
 import com.megapapa.rsrc.config.DirectoryConfiguration;
-import com.megapapa.rsrc.resource.FileResource;
+import com.megapapa.rsrc.resource.ResourceBuilder;
 import com.megapapa.rsrc.resource.directory.Directory;
+import com.megapapa.rsrc.resource.file.FileResource;
+import com.megapapa.rsrc.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 /**
  * Reader for reading files and their info.
@@ -27,6 +20,11 @@ public class SystemReader {
 
     private SystemReader() {}
 
+    /**
+     * Non-recursive directory reading.
+     * @param configuration
+     * @return directory with file resource
+     */
     public Directory readDirectory(DirectoryConfiguration configuration) {
         LOGGER.info("Read directory on path {}", configuration.getPath());
         File systemDir = new File(configuration.getPath());
@@ -37,28 +35,16 @@ public class SystemReader {
 
         Directory directory = new Directory(configuration.getPath());
         directory.setSize(systemDir.getUsableSpace());
-        directory.setCreationTime(LocalDateTime.ofInstant(
-                    getCreationTime(systemDir).toInstant(), ZoneId.systemDefault()
-                )
-        );
+        directory.setCreationTime(FileUtil.getCreationTime(systemDir));
         for (File file : systemDir.listFiles()) {
-
+            if (!file.isDirectory()) {
+                FileResource resource = ResourceBuilder.build(file, configuration.getType());
+                if (resource != null) {
+                    directory.putFile(resource);
+                }
+            }
         }
         return directory;
     }
 
-    private FileResource readFileResource() {
-
-    }
-
-    private FileTime getCreationTime(File file) {
-        Path p = Paths.get(file.getAbsolutePath());
-        BasicFileAttributes view;
-        try {
-            view = Files.getFileAttributeView(p, BasicFileAttributeView.class).readAttributes();
-        } catch (IOException exception) {
-            throw new ReadingException(exception);
-        }
-        return view.creationTime();
-    }
 }

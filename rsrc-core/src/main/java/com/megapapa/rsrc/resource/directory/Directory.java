@@ -1,6 +1,6 @@
 package com.megapapa.rsrc.resource.directory;
 
-import com.megapapa.rsrc.resource.FileResource;
+import com.megapapa.rsrc.resource.file.FileResource;
 import com.megapapa.rsrc.resource.Resource;
 
 import java.util.LinkedList;

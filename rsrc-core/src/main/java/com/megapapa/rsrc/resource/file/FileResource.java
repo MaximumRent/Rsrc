@@ -1,7 +1,22 @@
 package com.megapapa.rsrc.resource.file;
 
-/**
- * Created by maxim on 7/9/18.
- */
-public class FileResource {
+import com.megapapa.rsrc.resource.Resource;
+
+import java.io.BufferedReader;
+
+public abstract class FileResource extends Resource {
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public byte[] read() {
+
+    }
 }
