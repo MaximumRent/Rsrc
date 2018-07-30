@@ -1,7 +1,7 @@
 package com.megapapa.rsrc.system;
 
 import com.megapapa.rsrc.config.DirectoryConfiguration;
-import com.megapapa.rsrc.resource.ResourceBuilder;
+import com.megapapa.rsrc.resource.ResourceFactory;
 import com.megapapa.rsrc.resource.directory.Directory;
 import com.megapapa.rsrc.resource.file.FileResource;
 import com.megapapa.rsrc.util.FileUtil;
@@ -38,7 +38,7 @@ public class SystemReader {
         directory.setCreationTime(FileUtil.getCreationTime(systemDir));
         for (File file : systemDir.listFiles()) {
             if (!file.isDirectory()) {
-                FileResource resource = ResourceBuilder.build(file, configuration.getType());
+                FileResource resource = ResourceFactory.build(file, configuration.getType());
                 if (resource != null) {
                     directory.putFile(resource);
                 }

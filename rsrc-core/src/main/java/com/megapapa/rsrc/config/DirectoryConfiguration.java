@@ -1,12 +1,11 @@
 package com.megapapa.rsrc.config;
 
-import com.megapapa.rsrc.access.Access;
-
 public class DirectoryConfiguration {
 
     private String path;
     private String type;
-    private Access access;
+    private AccessConfig access;
+    private CacheConfig config;
 
     public String getPath() {
         return path;
@@ -16,11 +15,11 @@ public class DirectoryConfiguration {
         this.path = path;
     }
 
-    public Access getAccess() {
+    public AccessConfig getAccess() {
         return access;
     }
 
-    public void setAccess(Access access) {
+    public void setAccess(AccessConfig access) {
         this.access = access;
     }
 

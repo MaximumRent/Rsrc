@@ -1,0 +1,13 @@
+# Configuration example
+rsrc:
+  directories:
+    images: # exemplar of directory
+      path: # path to directory
+      type: # type of files, which contains in directory
+      access: # access handler, it will be class
+      cache: # cache rule for directory
+    videos:
+      path:
+      type:
+      access:
+      cache:

@@ -1,16 +1,6 @@
 package com.megapapa.rsrc.statistics;
 
-import com.megapapa.rsrc.resource.Resource;
 
-public class WritingStatistics implements CollectableStatistics {
+public class WritingStatistics extends IncrementedStatistics {
 
-    @Override
-    public void inc(Resource resource) {
-
-    }
-
-    @Override
-    public void clear() {
-
-    }
 }

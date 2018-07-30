@@ -15,7 +15,13 @@ public class Directory extends Resource {
         files = new LinkedList<>();
     }
 
+    // TODO: Put file and in system?
     public void putFile(FileResource file) {
         files.add(file);
+    }
+
+    @Override
+    public String getFullPath() {
+        return getPath();
     }
 }

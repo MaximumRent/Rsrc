@@ -2,21 +2,18 @@ package com.megapapa.rsrc.resource.file;
 
 import com.megapapa.rsrc.resource.Resource;
 
-import java.io.BufferedReader;
-
 public abstract class FileResource extends Resource {
+
+    private static final String DELIMETER = "/";
 
     private String name;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public byte[] read() {
-
+    public String getFullPath() {
+        StringBuilder builder = new StringBuilder();
+        builder
+                .append(getPath())
+                .append(DELIMETER)
+                .append(name);
+        return builder.toString();
     }
 }

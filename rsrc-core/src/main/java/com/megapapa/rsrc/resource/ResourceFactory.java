@@ -18,14 +18,13 @@ import java.io.File;
  *
  * Created by maxim on 7/9/18.
  */
-public class ResourceBuilder {
+public class ResourceFactory {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBuilder.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResourceFactory.class);
 
     public static FileResource build(File file, String type) {
         FileResource resource = factory(type);
         if (resource != null) {
-            resource.setName(file.getName());
             resource.setPath(file.getAbsolutePath());
             resource.setSize(file.getUsableSpace());
             resource.setCreationTime(FileUtil.getCreationTime(file));

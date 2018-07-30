@@ -15,6 +15,8 @@ public abstract class Resource {
     private LocalDateTime creationTime;
     private long size;
 
+    public abstract String getFullPath();
+
     public String getPath() {
         return path;
     }
@@ -37,5 +39,10 @@ public abstract class Resource {
 
     public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
+    }
+
+    @Override
+    public String toString() {
+        return getFullPath();
     }
 }

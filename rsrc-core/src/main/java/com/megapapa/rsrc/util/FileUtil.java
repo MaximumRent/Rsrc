@@ -1,5 +1,7 @@
 package com.megapapa.rsrc.util;
 
+import com.google.common.io.ByteSource;
+import com.megapapa.rsrc.resource.Resource;
 import com.megapapa.rsrc.system.ReadingException;
 
 import java.io.File;
@@ -23,5 +25,11 @@ public class FileUtil {
             throw new ReadingException(exception);
         }
         return LocalDateTime.ofInstant(view.creationTime().toInstant(), ZoneId.systemDefault());
+    }
+
+    public static byte[] getResourceBytes(Resource resource) throws IOException {
+        File file = new File(resource.getFullPath());
+        ByteSource source = com.google.common.io.Files.asByteSource(file);
+        return source.read();
     }
 }
