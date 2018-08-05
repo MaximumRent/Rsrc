@@ -5,5 +5,12 @@ import java.util.Map;
 public class Configuration {
 
     private Map<String, DirectoryConfiguration> directories;
-    private CacheConfig cacheConfig;
+
+    public Map<String, DirectoryConfiguration> getDirectories() {
+        return directories;
+    }
+
+    public void setDirectories(Map<String, DirectoryConfiguration> directories) {
+        this.directories = directories;
+    }
 }

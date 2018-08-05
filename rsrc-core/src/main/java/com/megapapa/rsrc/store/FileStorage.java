@@ -11,5 +11,9 @@ public class FileStorage {
 
     private List<Directory> directories;
 
+    public List<Directory> getDirectories() {
+        return directories;
+    }
+
     // Add cache and storage there ZIPPED files
 }

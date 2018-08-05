@@ -25,7 +25,7 @@ public class SystemReader {
      * @param configuration
      * @return directory with file resource
      */
-    public Directory readDirectory(DirectoryConfiguration configuration) {
+    public static Directory readDirectory(DirectoryConfiguration configuration) {
         LOGGER.info("Read directory on path {}", configuration.getPath());
         File systemDir = new File(configuration.getPath());
         if (!systemDir.isDirectory()) {
@@ -36,14 +36,17 @@ public class SystemReader {
         Directory directory = new Directory(configuration.getPath());
         directory.setSize(systemDir.getUsableSpace());
         directory.setCreationTime(FileUtil.getCreationTime(systemDir));
+        int filesCount = 0;
         for (File file : systemDir.listFiles()) {
             if (!file.isDirectory()) {
                 FileResource resource = ResourceFactory.build(file, configuration.getType());
                 if (resource != null) {
                     directory.putFile(resource);
+                    filesCount++;
                 }
             }
         }
+        LOGGER.info("'{}' directory was readed successfully. Files in directory: {}", directory, filesCount);
         return directory;
     }
 

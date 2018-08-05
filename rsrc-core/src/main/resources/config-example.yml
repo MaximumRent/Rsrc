@@ -6,6 +6,8 @@ rsrc:
       type: # type of files, which contains in directory
       access: # access handler, it will be class
       cache: # cache rule for directory
+        size: # cache size
+        warmingUp: # true/false - is cache will be warming up on application startup
     videos:
       path:
       type:

@@ -9,15 +9,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-public class ResourceCache {
+public class FileCache {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResourceCache.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileCache.class);
 
     private Cache<String, byte[]> cachedFiles;
     private long maxSize;
     private long currentSize;
 
-    public ResourceCache(long maxSize) {
+    public FileCache(long maxSize) {
         cachedFiles = Caffeine.newBuilder().build();
         this.maxSize = maxSize;
     }
@@ -34,6 +34,7 @@ public class ResourceCache {
         }
         try {
             cachedFiles.put(resource.getFullPath(), FileUtil.getResourceBytes(resource));
+            currentSize += resource.getSize();
         } catch (IOException e) {
             LOGGER.info("Resource '{}' can't be added. Cause: {}.", resource, e.getCause());
             return false;

@@ -1,8 +1,11 @@
 package com.megapapa.rsrc.access;
 
 /**
- * Created by maxim on 7/9/18.
+ * Access object, which has access handler;
  */
 public class Access {
+
+    private AccessHandler handler;
+
 
 }

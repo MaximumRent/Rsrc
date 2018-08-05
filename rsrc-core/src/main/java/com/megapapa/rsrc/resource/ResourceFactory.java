@@ -22,6 +22,8 @@ public class ResourceFactory {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceFactory.class);
 
+    private ResourceFactory() {}
+
     public static FileResource build(File file, String type) {
         FileResource resource = factory(type);
         if (resource != null) {

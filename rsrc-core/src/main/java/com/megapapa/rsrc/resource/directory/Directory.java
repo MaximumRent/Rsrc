@@ -15,9 +15,21 @@ public class Directory extends Resource {
         files = new LinkedList<>();
     }
 
+    public void getFile(FileResource file) {
+
+    }
+
     // TODO: Put file and in system?
     public void putFile(FileResource file) {
         files.add(file);
+    }
+
+    public long getTotalSize() {
+        long totalSize = 0;
+        for (FileResource fileResource : files) {
+            totalSize += fileResource.getSize();
+        }
+        return totalSize;
     }
 
     @Override

@@ -10,14 +10,14 @@ public class SupportedTypes {
 
     private SupportedTypes() {}
 
-    private static Set imageTypes;
-    private static Set documentTypes;
-    private static Set soundTypes;
-    private static Set textTypes;
-    private static Set videoTypes;
+    public static Set<String> imageTypes;
+    public static Set<String> documentTypes;
+    public static Set<String> soundTypes;
+    public static Set<String> textTypes;
+    public static Set<String> videoTypes;
 
     static {
-        imageTypes = new HashSet();
+        imageTypes = new HashSet<>();
         imageTypes.add("jpg");
         imageTypes.add("bmp");
         imageTypes.add("gif");
@@ -26,25 +26,25 @@ public class SupportedTypes {
 
     // TODO: maybe make document is not other types?
     static {
-        documentTypes = new HashSet();
+        documentTypes = new HashSet<>();
         documentTypes.add("doc");
         documentTypes.add("docx");
         documentTypes.add("pdf");
     }
 
     static {
-        soundTypes = new HashSet();
+        soundTypes = new HashSet<>();
         soundTypes.add("mp3");
         soundTypes.add("flac");
     }
 
     static {
-        textTypes = new HashSet();
+        textTypes = new HashSet<>();
         textTypes.add("txt");
     }
 
     static {
-        videoTypes = new HashSet();
+        videoTypes = new HashSet<>();
         videoTypes.add("mpeg");
         videoTypes.add("webm");
     }
