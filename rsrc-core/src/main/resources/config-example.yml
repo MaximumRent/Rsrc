@@ -1,5 +1,9 @@
 # Configuration example
+# TODO: If 'access' filter isn't active and user tried add access handler to directory - throw exception
 rsrc:
+  filters:
+    read: zip, access
+    write: zip, access
   directories:
     images: # exemplar of directory
       path: # path to directory

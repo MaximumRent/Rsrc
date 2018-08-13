@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * Zipping utility, which provides 'zip' and 'unzip' methods.
- * Used DEFLATE algorithm.
+ * Used 'DEFLATE' algorithm.
  */
 public class ZipUtil {
 
