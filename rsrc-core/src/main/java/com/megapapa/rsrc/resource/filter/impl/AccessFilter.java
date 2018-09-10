@@ -12,8 +12,23 @@ public class AccessFilter implements Filter {
     private static final String NAME = "Access filter";
     private static final int FILTER_LEVEL = 1;
 
+    public AccessFilter() {
+
+    }
+
+    @Override
+    public void beforeFiltering() {
+
+    }
+
+    @Override
+    public void afterFiltering() {
+
+    }
+
     @Override
     public FileResource doFilter(FileResource resource) {
+
         return null;
     }
 

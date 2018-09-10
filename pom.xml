@@ -8,18 +8,6 @@
     <artifactId>rsrc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <modules>
         <module>rsrc-core</module>
@@ -31,7 +19,6 @@
         <slf4j.version>1.7.25</slf4j.version>
         <guava.version>25.1-jre</guava.version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
@@ -60,13 +47,24 @@
         <dependency>
             <groupId>io.bootique.jersey</groupId>
             <artifactId>bootique-jersey</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.bootique.logback</groupId>
             <artifactId>bootique-logback</artifactId>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

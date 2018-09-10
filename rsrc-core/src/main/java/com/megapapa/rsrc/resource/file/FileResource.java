@@ -3,6 +3,7 @@ package com.megapapa.rsrc.resource.file;
 import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
 import com.megapapa.rsrc.resource.Resource;
+import com.megapapa.rsrc.resource.directory.Directory;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -20,6 +21,7 @@ public abstract class FileResource extends Resource {
     private static final String DELIMETER = "/";
 
     private String name;
+    private Directory directory;
 
     public byte[] getBytes() throws IOException {
         File file = new File(getFullPath());
@@ -46,5 +48,13 @@ public abstract class FileResource extends Resource {
                 .append(DELIMETER)
                 .append(name);
         return builder.toString();
+    }
+
+    public Directory getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(Directory directory) {
+        this.directory = directory;
     }
 }

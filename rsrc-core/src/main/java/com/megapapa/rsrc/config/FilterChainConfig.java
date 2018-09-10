@@ -20,4 +20,10 @@ public class FilterChainConfig {
     public void setReadFilters(String readFilters) {
         this.readFilters = readFilters;
     }
+
+    @Override
+    public String toString() {
+        return "Read filters: " + readFilters + "\n" +
+                "Write filters: " + writeFilters;
+    }
 }

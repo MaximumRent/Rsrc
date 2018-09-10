@@ -19,7 +19,7 @@ class FilterFactory {
     private static final String CENSURE_FILTER = "censure";
 
     /**
-     * Get new filter based on filter string-type. Filter type can has user-defined type.
+     * Get new filter based on filter string-type. Filter type can has user-defined type (e.g. org.company.FilterClass).
      * @param type
      * @return filter instance.
      */

@@ -20,4 +20,9 @@ public class CacheConfig {
     public void setWarmingUp(boolean warmingUp) {
         this.warmingUp = warmingUp;
     }
+
+    @Override
+    public String toString() {
+        return "Cache config: " + size + " mb; Warm-up: " + warmingUp + ";" ;
+    }
 }

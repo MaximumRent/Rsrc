@@ -69,7 +69,9 @@ public class FilterChain {
                 List<Filter> filters = readFilters.get(filterLevel);
                 if (filters != null) {
                     for (Filter filter : filters) {
+                        filter.beforeFiltering();
                         filter.doFilter(resource);
+                        filter.afterFiltering();
                         filterResult.stamp(filter);
                     }
                 }
@@ -93,7 +95,9 @@ public class FilterChain {
                 List<Filter> filters = writeFilters.get(filterLevel);
                 if (filters != null) {
                     for (Filter filter : filters) {
+                        filter.beforeFiltering();
                         filter.doFilter(resource);
+                        filter.afterFiltering();
                         filterResult.stamp(filter);
                     }
                 }

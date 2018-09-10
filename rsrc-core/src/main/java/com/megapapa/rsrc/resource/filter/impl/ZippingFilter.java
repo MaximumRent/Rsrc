@@ -9,7 +9,17 @@ import com.megapapa.rsrc.resource.filter.Filter;
 public class ZippingFilter implements Filter {
 
     private static final String NAME = "Zipping filter";
-    private static final int FILTER_LEVEL = 1;
+    private static final int FILTER_LEVEL = 2;
+
+    @Override
+    public void beforeFiltering() {
+
+    }
+
+    @Override
+    public void afterFiltering() {
+
+    }
 
     @Override
     public FileResource doFilter(FileResource resource) {

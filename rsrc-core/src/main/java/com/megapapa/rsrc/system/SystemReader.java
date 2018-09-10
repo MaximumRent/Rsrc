@@ -1,5 +1,7 @@
 package com.megapapa.rsrc.system;
 
+import com.megapapa.rsrc.cache.FileCache;
+import com.megapapa.rsrc.cache.FileCacheBuilder;
 import com.megapapa.rsrc.config.DirectoryConfiguration;
 import com.megapapa.rsrc.resource.ResourceFactory;
 import com.megapapa.rsrc.resource.directory.Directory;
@@ -33,14 +35,20 @@ public class SystemReader {
             throw new ReadingException(configuration.getPath() + " is not directory.");
         }
 
-        Directory directory = new Directory(configuration.getPath());
+        FileCache cache = FileCacheBuilder.build(configuration.getCacheConfig());
+        Directory directory = new Directory(configuration.getPath(), cache);
         directory.setSize(systemDir.getUsableSpace());
         directory.setCreationTime(FileUtil.getCreationTime(systemDir));
         int filesCount = 0;
+        boolean canInsertResourceToCache = true;
         for (File file : systemDir.listFiles()) {
             if (!file.isDirectory()) {
                 FileResource resource = ResourceFactory.build(file, configuration.getType());
                 if (resource != null) {
+                    if ((configuration.getCacheConfig().isWarmingUp()) && (canInsertResourceToCache)) {
+                        LOGGER.info("WARM-UPPING: '{}' added to '{}' cache. ", resource.getFullPath(), directory);
+                        canInsertResourceToCache = cache.put(resource);
+                    }
                     directory.putFile(resource);
                     filesCount++;
                 }

@@ -9,6 +9,8 @@ import java.lang.reflect.Constructor;
 
 public class FilterLoader {
 
+    private FilterLoader() {}
+
     private static final Logger LOGGER = LoggerFactory.getLogger(FilterLoader.class);
 
     public static Filter load(String type) throws FilterLoadingException {
